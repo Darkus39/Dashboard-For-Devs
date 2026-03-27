@@ -309,7 +309,7 @@
 
   /* TIMER */
   .timer-value {
-    font-family: var(--font-display); font-size: 38px;
+    font-family: var(--font-display); font-size: 32px;
     font-weight: 800; color: var(--text);
     letter-spacing: 0.05em; line-height: 1;
     transition: color 0.3s; text-align: center;
@@ -333,7 +333,7 @@
   }
 
   /* QUICK ACCESS */
-  .quick-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .quick-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; }
   .quick-btn {
     display:flex; align-items:center; gap:7px; padding:11px 10px;
     background:rgba(0,200,255,0.03); border:1px solid var(--glass-border);
@@ -382,7 +382,6 @@
       <div class="status-dot"></div>
       SYSTEMS ONLINE
     </div>
-    <div class="header-time" id="headerTime">00:00:00</div>
   </header>
 
   <!-- MAIN GRID -->
@@ -472,6 +471,32 @@
         <div class="car-label">LAMBORGHINI AVENTADOR SVJ · <span>V12 · 770CV · 350KM/H</span></div>
       </div>
 
+      <!-- TIMER + QUICK ACCESS ROW -->
+      <div style="display:flex; gap:10px; width:100%; flex-shrink:0;">
+        <div class="panel" style="flex:1;">
+          <div class="panel-label">Focus Timer</div>
+          <div class="timer-value" id="timerDisplay">25:00</div>
+          <div class="timer-mode" id="timerMode">FOCUS SESSION</div>
+          <div class="timer-controls" style="margin-top:8px;">
+            <button class="btn primary" id="timerStart" onclick="timerToggle()">START</button>
+            <button class="btn" onclick="timerReset()">RESET</button>
+            <button class="btn" onclick="timerSkip()">SKIP</button>
+          </div>
+          <div class="sessions-count">Sessions today: <span id="sessionCount" style="color:var(--cyan)">0</span></div>
+        </div>
+        <div class="panel" style="flex:1;">
+          <div class="panel-label">Quick Access</div>
+          <div class="quick-grid">
+            <a href="https://github.com/Darkus39" target="_blank" class="quick-btn"><span class="quick-icon">⚡</span><span class="quick-label">GitHub</span></a>
+            <a href="https://spectre-flow-website.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">🌐</span><span class="quick-label">Spectre Flow</span></a>
+            <a href="https://www.linkedin.com/in/md-alif-hossain-nayem-0353a5358" target="_blank" class="quick-btn"><span class="quick-icon">🔗</span><span class="quick-label">LinkedIn</span></a>
+            <a href="https://instagram.com/spectreflow.ai" target="_blank" class="quick-btn"><span class="quick-icon">📡</span><span class="quick-label">Instagram</span></a>
+            <a href="https://bracu-study-planner.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">📚</span><span class="quick-label">Study Planner</span></a>
+            <a href="https://cal.com/ayanokouji-j98vjt" target="_blank" class="quick-btn"><span class="quick-icon">📅</span><span class="quick-label">Book a Call</span></a>
+          </div>
+        </div>
+      </div>
+
       <!-- STAT CHIPS -->
       <div class="stat-row">
         <div class="stat-chip"><span class="stat-chip-value">770</span><span class="stat-chip-label">HP</span></div>
@@ -485,19 +510,6 @@
     <!-- RIGHT COLUMN -->
     <div class="right-col">
 
-      <!-- FOCUS TIMER -->
-      <div class="panel">
-        <div class="panel-label">Focus Timer</div>
-        <div class="timer-value" id="timerDisplay">25:00</div>
-        <div class="timer-mode" id="timerMode">FOCUS SESSION</div>
-        <div class="timer-controls">
-          <button class="btn primary" id="timerStart" onclick="timerToggle()">START</button>
-          <button class="btn" onclick="timerReset()">RESET</button>
-          <button class="btn" onclick="timerSkip()">SKIP</button>
-        </div>
-        <div class="sessions-count">Sessions today: <span id="sessionCount" style="color:var(--cyan)">0</span></div>
-      </div>
-
       <!-- SYSTEM LOG -->
       <div class="panel grow">
         <div class="panel-label">System Log</div>
@@ -507,19 +519,6 @@
           <div class="log-line" style="animation-delay:0.5s"><span class="ts">00:01</span><span class="msg">› Loading operator profile...</span></div>
           <div class="log-line ok" style="animation-delay:0.7s"><span class="ts">00:02</span><span class="msg">› Spectre Flow engine ONLINE</span></div>
           <div class="log-line" style="animation-delay:0.9s"><span class="ts">00:02</span><span class="msg">› Awaiting input <span class="log-cursor"></span></span></div>
-        </div>
-      </div>
-
-      <!-- QUICK ACCESS -->
-      <div class="panel">
-        <div class="panel-label">Quick Access</div>
-        <div class="quick-grid">
-          <a href="https://github.com/Darkus39" target="_blank" class="quick-btn"><span class="quick-icon">⚡</span><span class="quick-label">GitHub</span></a>
-          <a href="https://spectre-flow-website.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">🌐</span><span class="quick-label">Spectre Flow</span></a>
-          <a href="https://www.linkedin.com/in/md-alif-hossain-nayem-0353a5358" target="_blank" class="quick-btn"><span class="quick-icon">🔗</span><span class="quick-label">LinkedIn</span></a>
-          <a href="https://instagram.com/spectreflow.ai" target="_blank" class="quick-btn"><span class="quick-icon">📡</span><span class="quick-label">Instagram</span></a>
-          <a href="https://bracu-study-planner.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">📚</span><span class="quick-label">Study Planner</span></a>
-          <a href="https://cal.com/ayanokouji-j98vjt" target="_blank" class="quick-btn"><span class="quick-icon">📅</span><span class="quick-label">Book a Call</span></a>
         </div>
       </div>
 
@@ -554,7 +553,6 @@
     const s = String(now.getSeconds()).padStart(2,'0');
     const t = `${h}:${m}:${s}`;
     document.getElementById('clockTime').textContent = t;
-    document.getElementById('headerTime').textContent = t;
     const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
     const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
     document.getElementById('clockDate').textContent =
