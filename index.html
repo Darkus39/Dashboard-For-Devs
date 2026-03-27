@@ -68,7 +68,6 @@
     flex-direction: column;
   }
 
-  /* ── HEADER ── */
   header {
     display: flex;
     align-items: center;
@@ -120,7 +119,6 @@
     letter-spacing: 0.1em;
   }
 
-  /* ── MAIN GRID ── */
   .main-grid {
     flex: 1;
     display: grid;
@@ -130,7 +128,6 @@
     align-items: start;
   }
 
-  /* ── GLASS PANEL ── */
   .panel {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -168,7 +165,6 @@
     background: var(--glass-border);
   }
 
-  /* ── LEFT COLUMN ── */
   .left-col {
     display: flex;
     flex-direction: column;
@@ -176,7 +172,6 @@
     padding-right: 20px;
   }
 
-  /* ── RIGHT COLUMN ── */
   .right-col {
     display: flex;
     flex-direction: column;
@@ -184,7 +179,6 @@
     padding-left: 20px;
   }
 
-  /* ── CENTER COLUMN ── */
   .center-col {
     display: flex;
     flex-direction: column;
@@ -193,7 +187,6 @@
     padding: 0 8px;
   }
 
-  /* ── OPERATOR ID ── */
   .operator-id {
     text-align: center;
   }
@@ -217,7 +210,6 @@
     margin-top: 4px;
   }
 
-  /* ── CAR CONTAINER ── */
   .car-container {
     width: 100%;
     position: relative;
@@ -240,9 +232,11 @@
   }
 
   .car-svg-wrap {
-    position: relative; z-index: 1;
+    position: relative; 
+    z-index: 1;
     width: 100%;
-    filter: drop-shadow(0 0 18px rgba(0,200,255,0.22)) drop-shadow(0 8px 24px rgba(0,0,0,0.7));
+    /* Updated filter to integrate image with theme */
+    filter: drop-shadow(0 0 25px rgba(0,200,255,0.3)) brightness(0.95);
     animation: float 5s ease-in-out infinite;
   }
 
@@ -251,15 +245,15 @@
     50% { transform: translateY(-6px); }
   }
 
-  /* ── SCAN LINE on car ── */
   .car-scanline {
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(90deg, transparent 0%, var(--cyan) 50%, transparent 100%);
-    opacity: 0.5;
-    animation: scan 3.5s linear infinite;
-    z-index: 2;
+    box-shadow: 0 0 15px var(--cyan);
+    opacity: 0.6;
+    animation: scan 4s linear infinite;
+    z-index: 5;
     pointer-events: none;
   }
 
@@ -274,7 +268,7 @@
     letter-spacing: 0.25em;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-top: 8px;
+    margin-top: 15px;
     text-align: center;
   }
 
@@ -283,7 +277,6 @@
     letter-spacing: 0.15em;
   }
 
-  /* ── STAT ROW ── */
   .stat-row {
     display: flex;
     justify-content: space-between;
@@ -327,7 +320,6 @@
     display: block;
   }
 
-  /* ── PROGRESS BAR ── */
   .progress-item {
     margin-bottom: 14px;
   }
@@ -380,7 +372,6 @@
     box-shadow: 0 0 6px var(--cyan);
   }
 
-  /* ── CLOCK ── */
   .clock-display {
     text-align: center;
     padding: 12px 0;
@@ -404,7 +395,6 @@
     margin-top: 6px;
   }
 
-  /* ── UPTIME ── */
   .uptime-display {
     font-family: var(--font-display);
     font-size: 20px;
@@ -424,7 +414,6 @@
     margin-top: 2px;
   }
 
-  /* ── TERMINAL LOG ── */
   .log-feed {
     display: flex;
     flex-direction: column;
@@ -463,7 +452,6 @@
 
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-  /* ── FOCUS TIMER ── */
   .timer-display {
     text-align: center;
   }
@@ -536,7 +524,6 @@
     text-transform: uppercase;
   }
 
-  /* ── QUICK ACCESS ── */
   .quick-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -583,7 +570,6 @@
     white-space: nowrap;
   }
 
-  /* ── GITHUB ACTIVITY ── */
   .gh-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -627,7 +613,6 @@
 
   .gh-link:hover { color: var(--cyan); }
 
-  /* ── FOOTER ── */
   footer {
     padding: 14px 32px;
     border-top: 1px solid var(--glass-border);
@@ -655,14 +640,6 @@
     text-transform: uppercase;
   }
 
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: var(--glass-border);
-    margin: 12px 0;
-  }
-
-  /* ── REBOOT INFO ── */
   .reboot-info {
     font-size: 9px;
     letter-spacing: 0.1em;
@@ -674,7 +651,6 @@
 
   .reboot-info span { color: rgba(0,200,255,0.5); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .main-grid {
       grid-template-columns: 1fr;
@@ -688,7 +664,6 @@
 <body>
 <div class="wrapper">
 
-  <!-- HEADER -->
   <header>
     <div class="header-brand">DARKUS39 <span>// DASHBOARD</span></div>
     <div class="header-status">
@@ -698,13 +673,9 @@
     <div class="header-time" id="headerTime">00:00:00</div>
   </header>
 
-  <!-- MAIN GRID -->
   <div class="main-grid">
 
-    <!-- LEFT COLUMN -->
     <div class="left-col">
-
-      <!-- CLOCK -->
       <div class="panel">
         <div class="panel-label">Local Time</div>
         <div class="clock-display">
@@ -713,7 +684,6 @@
         </div>
       </div>
 
-      <!-- OPERATOR STATUS -->
       <div class="panel">
         <div class="panel-label">Operator Status</div>
         <div class="progress-item">
@@ -754,7 +724,6 @@
         </div>
       </div>
 
-      <!-- UPTIME -->
       <div class="panel">
         <div class="panel-label">Operator Uptime</div>
         <div class="uptime-display" id="uptimeDisplay">000d 00h 00m</div>
@@ -762,7 +731,6 @@
         <div class="reboot-info" style="margin-top:10px;">back online · <span id="uptimeExact">calculating...</span></div>
       </div>
 
-      <!-- GITHUB -->
       <div class="panel">
         <div class="panel-label">GitHub Activity</div>
         <div class="gh-stats">
@@ -785,201 +753,26 @@
         </div>
         <a href="https://github.com/Darkus39" target="_blank" class="gh-link">↗ github.com/Darkus39</a>
       </div>
-
     </div>
 
-    <!-- CENTER COLUMN -->
     <div class="center-col">
-
-      <!-- OPERATOR ID -->
       <div class="operator-id">
         <div class="op-name">AYANOKOUJI <span>//</span> DARKUS39</div>
         <div class="op-subtitle">AI Infrastructure · CSE Undergrad Y2 · Spectre Flow</div>
       </div>
 
-      <!-- CAR -->
       <div class="car-container">
         <div class="car-scanline"></div>
         <div class="car-svg-wrap">
-          <!-- Lamborghini Aventador SVJ side profile SVG -->
-          <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
-            <defs>
-              <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#1a2a3a"/>
-                <stop offset="40%" stop-color="#0d1c2a"/>
-                <stop offset="100%" stop-color="#060e16"/>
-              </linearGradient>
-              <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="rgba(0,200,255,0)"/>
-                <stop offset="40%" stop-color="rgba(0,200,255,0.7)"/>
-                <stop offset="100%" stop-color="rgba(0,200,255,0)"/>
-              </linearGradient>
-              <linearGradient id="wheelGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%" gradientUnits="objectBoundingBox" id="wg1">
-                <stop offset="0%" stop-color="#1a2e3e"/>
-                <stop offset="100%" stop-color="#050c14"/>
-              </linearGradient>
-              <radialGradient id="wg2" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#0d1e2e"/>
-                <stop offset="100%" stop-color="#030810"/>
-              </radialGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <filter id="strongGlow">
-                <feGaussianBlur stdDeviation="3" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <clipPath id="bodyClip">
-                <path d="M80,240 L120,180 L160,140 L220,100 L320,75 L450,68 L560,72 L650,85 L720,110 L760,140 L790,175 L810,210 L820,240 Z"/>
-              </clipPath>
-            </defs>
-
-            <!-- SHADOW UNDER CAR -->
-            <ellipse cx="450" cy="276" rx="350" ry="18" fill="rgba(0,0,0,0.6)"/>
-            <ellipse cx="450" cy="276" rx="280" ry="10" fill="rgba(0,200,255,0.06)"/>
-
-            <!-- MAIN BODY -->
-            <!-- underbody/sill -->
-            <path d="M140,235 L180,222 L680,218 L740,228 L760,242 L120,244 Z" fill="#040a10"/>
-            <!-- main body shape - Aventador profile -->
-            <path d="M85,242 
-                     L108,210 L120,192 L135,175 
-                     L160,150 L185,128 L210,112 
-                     L250,95 L300,82 L370,74 
-                     L450,70 L530,70 L600,74 
-                     L650,82 L690,95 
-                     L718,112 L740,132 
-                     L758,155 L772,178 
-                     L782,200 L788,222 
-                     L790,242 Z" 
-                  fill="url(#bodyGrad)" stroke="rgba(0,200,255,0.18)" stroke-width="1"/>
-
-            <!-- ROOF / CABIN -->
-            <path d="M270,112 L290,100 L330,85 L400,76 L480,74 L550,76 L610,84 L650,97 L672,112 L660,120 L580,110 L480,106 L380,108 L300,118 Z" 
-                  fill="#0a1620" stroke="rgba(0,200,255,0.12)" stroke-width="0.8"/>
-
-            <!-- WINDSCREEN -->
-            <path d="M300,118 L325,98 L390,82 L480,78 L560,80 L610,90 L640,108 L620,115 L560,102 L480,98 L390,100 L330,112 Z"
-                  fill="rgba(0,200,255,0.07)" stroke="rgba(0,200,255,0.3)" stroke-width="0.8"/>
-            <!-- windscreen reflection -->
-            <path d="M330,112 L360,94 L410,84 L480,81 L540,82 L580,90 L600,100"
-                  fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-linecap="round"/>
-
-            <!-- REAR WING/SPOILER -->
-            <path d="M752,135 L790,120 L810,125 L808,138 L780,145 L755,148 Z"
-                  fill="#0d1e2e" stroke="rgba(0,200,255,0.25)" stroke-width="0.8"/>
-            <line x1="790" y1="120" x2="790" y2="165" stroke="rgba(0,200,255,0.2)" stroke-width="1.2"/>
-
-            <!-- SIDE VENT - front -->
-            <path d="M180,155 L210,148 L215,165 L185,170 Z" fill="rgba(0,0,0,0.8)" stroke="rgba(0,200,255,0.2)" stroke-width="0.8"/>
-            <line x1="190" y1="157" x2="205" y2="162" stroke="rgba(0,200,255,0.15)" stroke-width="0.6"/>
-            <line x1="192" y1="161" x2="208" y2="166" stroke="rgba(0,200,255,0.1)" stroke-width="0.6"/>
-
-            <!-- SIDE VENT - rear -->
-            <path d="M680,110 L715,108 L718,128 L682,130 Z" fill="rgba(0,0,0,0.8)" stroke="rgba(0,200,255,0.2)" stroke-width="0.8"/>
-            <line x1="688" y1="112" x2="710" y2="112" stroke="rgba(0,200,255,0.15)" stroke-width="0.6"/>
-            <line x1="688" y1="118" x2="710" y2="118" stroke="rgba(0,200,255,0.1)" stroke-width="0.6"/>
-            <line x1="688" y1="124" x2="710" y2="124" stroke="rgba(0,200,255,0.08)" stroke-width="0.6"/>
-
-            <!-- DOOR LINE -->
-            <path d="M295,118 L295,205 L480,208 L550,205 L550,115"
-                  fill="none" stroke="rgba(0,200,255,0.12)" stroke-width="0.7"/>
-
-            <!-- SIDE SKIRT LINE -->
-            <path d="M145,225 L200,218 L680,215 L745,222"
-                  fill="none" stroke="rgba(0,200,255,0.22)" stroke-width="1" filter="url(#glow)"/>
-
-            <!-- CYAN ACCENT STRIPE along body -->
-            <path d="M108,210 L200,200 L400,194 L600,196 L720,204 L788,218"
-                  fill="none" stroke="rgba(0,200,255,0.35)" stroke-width="1.2" filter="url(#glow)"/>
-
-            <!-- FRONT BUMPER / SPLITTER -->
-            <path d="M85,242 L100,230 L130,220 L155,218 L155,235 L130,240 L100,245 Z"
-                  fill="#060e16" stroke="rgba(0,200,255,0.2)" stroke-width="0.8"/>
-            <!-- front lower splitter -->
-            <path d="M88,248 L155,238 L155,244 L90,252 Z"
-                  fill="rgba(0,200,255,0.15)" stroke="rgba(0,200,255,0.4)" stroke-width="0.6"/>
-
-            <!-- FRONT HEADLIGHT -->
-            <path d="M108,186 L138,175 L148,190 L118,200 Z"
-                  fill="rgba(0,200,255,0.08)" stroke="rgba(0,200,255,0.5)" stroke-width="1"/>
-            <!-- DRL strip -->
-            <path d="M112,188 L135,180 L140,186 L118,193 Z"
-                  fill="rgba(0,200,255,0.18)" stroke="rgba(0,200,255,0.8)" stroke-width="0.5" filter="url(#strongGlow)"/>
-            <line x1="113" y1="192" x2="138" y2="183" stroke="rgba(0,200,255,0.9)" stroke-width="1" filter="url(#strongGlow)"/>
-
-            <!-- REAR TAILLIGHT -->
-            <path d="M768,175 L790,168 L798,182 L776,190 Z"
-                  fill="rgba(255,40,60,0.12)" stroke="rgba(255,40,60,0.5)" stroke-width="1"/>
-            <path d="M772,178 L787,172 L793,182 L778,187 Z"
-                  fill="rgba(255,40,60,0.25)" stroke="rgba(255,60,80,0.8)" stroke-width="0.5" filter="url(#glow)"/>
-            <line x1="774" y1="184" x2="790" y2="177" stroke="rgba(255,50,70,0.8)" stroke-width="1" filter="url(#glow)"/>
-
-            <!-- EXHAUST TIPS -->
-            <ellipse cx="792" cy="235" rx="8" ry="5" fill="#020608" stroke="rgba(0,200,255,0.18)" stroke-width="0.8"/>
-            <ellipse cx="806" cy="233" rx="7" ry="4.5" fill="#020608" stroke="rgba(0,200,255,0.18)" stroke-width="0.8"/>
-            <ellipse cx="792" cy="235" rx="4" ry="2.5" fill="rgba(255,100,0,0.08)"/>
-
-            <!-- REAR DIFFUSER -->
-            <path d="M760,248 L815,240 L820,255 L760,258 Z"
-                  fill="#040a10" stroke="rgba(0,200,255,0.15)" stroke-width="0.7"/>
-            <line x1="770" y1="249" x2="772" y2="257" stroke="rgba(0,200,255,0.12)" stroke-width="0.8"/>
-            <line x1="780" y1="248" x2="782" y2="256" stroke="rgba(0,200,255,0.12)" stroke-width="0.8"/>
-            <line x1="790" y1="247" x2="792" y2="255" stroke="rgba(0,200,255,0.12)" stroke-width="0.8"/>
-            <line x1="800" y1="245" x2="802" y2="253" stroke="rgba(0,200,255,0.12)" stroke-width="0.8"/>
-
-            <!-- FRONT WHEEL -->
-            <circle cx="215" cy="252" r="52" fill="#050c14" stroke="rgba(0,200,255,0.25)" stroke-width="1.5"/>
-            <circle cx="215" cy="252" r="45" fill="url(#wg2)"/>
-            <circle cx="215" cy="252" r="38" fill="none" stroke="rgba(0,200,255,0.12)" stroke-width="1"/>
-            <!-- spokes -->
-            <g stroke="rgba(0,200,255,0.3)" stroke-width="2" filter="url(#glow)">
-              <line x1="215" y1="214" x2="215" y2="290"/>
-              <line x1="177" y1="252" x2="253" y2="252"/>
-              <line x1="188" y1="225" x2="242" y2="279"/>
-              <line x1="242" y1="225" x2="188" y2="279"/>
-              <line x1="183" y1="240" x2="247" y2="264"/>
-              <line x1="247" y1="240" x2="183" y2="264"/>
-            </g>
-            <!-- center cap -->
-            <circle cx="215" cy="252" r="12" fill="#0a1a28" stroke="rgba(0,200,255,0.4)" stroke-width="1"/>
-            <circle cx="215" cy="252" r="5" fill="rgba(0,200,255,0.3)"/>
-            <!-- brake disc -->
-            <circle cx="215" cy="252" r="28" fill="none" stroke="rgba(255,100,50,0.08)" stroke-width="2" stroke-dasharray="4 4"/>
-
-            <!-- REAR WHEEL -->
-            <circle cx="660" cy="252" r="54" fill="#050c14" stroke="rgba(0,200,255,0.25)" stroke-width="1.5"/>
-            <circle cx="660" cy="252" r="46" fill="url(#wg2)"/>
-            <circle cx="660" cy="252" r="39" fill="none" stroke="rgba(0,200,255,0.12)" stroke-width="1"/>
-            <!-- spokes -->
-            <g stroke="rgba(0,200,255,0.3)" stroke-width="2" filter="url(#glow)">
-              <line x1="660" y1="206" x2="660" y2="298"/>
-              <line x1="614" y1="252" x2="706" y2="252"/>
-              <line x1="627" y1="219" x2="693" y2="285"/>
-              <line x1="693" y1="219" x2="627" y2="285"/>
-              <line x1="621" y1="238" x2="699" y2="266"/>
-              <line x1="699" y1="238" x2="621" y2="266"/>
-            </g>
-            <!-- center cap -->
-            <circle cx="660" cy="252" r="13" fill="#0a1a28" stroke="rgba(0,200,255,0.4)" stroke-width="1"/>
-            <circle cx="660" cy="252" r="5" fill="rgba(0,200,255,0.3)"/>
-            <!-- brake disc hint -->
-            <circle cx="660" cy="252" r="30" fill="none" stroke="rgba(255,100,50,0.08)" stroke-width="2" stroke-dasharray="4 4"/>
-
-            <!-- GROUND LINE -->
-            <line x1="40" y1="305" x2="870" y2="305" stroke="rgba(0,200,255,0.08)" stroke-width="1"/>
-
-            <!-- CYAN GLOW GROUND REFLECTION -->
-            <path d="M100,305 Q450,285 810,305" fill="none" stroke="rgba(0,200,255,0.12)" stroke-width="3" filter="url(#glow)"/>
-          </svg>
+          <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c?q=80&w=1000&auto=format&fit=crop" 
+               alt="Aventador SVJ" 
+               style="width:100%; height:auto; display:block; filter: drop-shadow(0 0 15px rgba(0,200,255,0.2));">
         </div>
         <div class="car-glow"></div>
         <div class="car-label">LAMBORGHINI AVENTADOR SVJ · <span>V12 · 770CV · 350KM/H</span></div>
       </div>
 
-      <!-- BOTTOM STATS ROW -->
-      <div class="stat-row" style="width:100%">
+      <div class="stat-row">
         <div class="stat-chip">
           <span class="stat-chip-value">770</span>
           <span class="stat-chip-label">HP</span>
@@ -997,13 +790,9 @@
           <span class="stat-chip-label">V12</span>
         </div>
       </div>
-
     </div>
 
-    <!-- RIGHT COLUMN -->
     <div class="right-col">
-
-      <!-- FOCUS TIMER -->
       <div class="panel">
         <div class="panel-label">Focus Timer</div>
         <div class="timer-display">
@@ -1018,34 +807,24 @@
         <div class="sessions-count">Sessions today: <span id="sessionCount" style="color:var(--cyan)">0</span></div>
       </div>
 
-      <!-- TERMINAL LOG -->
       <div class="panel">
         <div class="panel-label">System Log</div>
         <div class="log-feed" id="logFeed">
-          <div class="log-line ok" style="animation-delay:0.1s">
+          <div class="log-line ok">
             <span class="ts">00:00</span>
             <span class="msg">› SYSTEM BOOT COMPLETE</span>
           </div>
-          <div class="log-line info" style="animation-delay:0.3s">
+          <div class="log-line info">
             <span class="ts">00:01</span>
             <span class="msg">› Dashboard initialized</span>
           </div>
-          <div class="log-line" style="animation-delay:0.5s">
-            <span class="ts">00:01</span>
-            <span class="msg">› Loading operator profile...</span>
-          </div>
-          <div class="log-line ok" style="animation-delay:0.7s">
+          <div class="log-line ok">
             <span class="ts">00:02</span>
             <span class="msg">› Spectre Flow engine ONLINE</span>
-          </div>
-          <div class="log-line" style="animation-delay:0.9s">
-            <span class="ts">00:02</span>
-            <span class="msg">› Awaiting input <span class="log-cursor"></span></span>
           </div>
         </div>
       </div>
 
-      <!-- QUICK ACCESS -->
       <div class="panel">
         <div class="panel-label">Quick Access</div>
         <div class="quick-grid">
@@ -1076,25 +855,19 @@
         </div>
       </div>
 
-      <!-- STACK -->
       <div class="panel">
         <div class="panel-label">Current Stack</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span style="font-size:9px;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Java 21</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Spring Boot</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">JavaFX</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:rgba(0,200,255,0.5);border:1px solid rgba(0,200,255,0.2);padding:4px 8px;border-radius:2px;text-transform:uppercase;">n8n</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:rgba(0,200,255,0.5);border:1px solid rgba(0,200,255,0.2);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Gemini</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Python</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Docker</span>
-          <span style="font-size:9px;letter-spacing:0.1em;color:rgba(0,200,255,0.5);border:1px solid rgba(0,200,255,0.2);padding:4px 8px;border-radius:2px;text-transform:uppercase;">NocoDB</span>
+          <span style="font-size:9px;border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Java 21</span>
+          <span style="font-size:9px;border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Spring Boot</span>
+          <span style="font-size:9px;color:rgba(0,200,255,0.5);border:1px solid rgba(0,200,255,0.2);padding:4px 8px;border-radius:2px;text-transform:uppercase;">n8n</span>
+          <span style="font-size:9px;color:rgba(0,200,255,0.5);border:1px solid rgba(0,200,255,0.2);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Gemini</span>
+          <span style="font-size:9px;border:1px solid var(--glass-border);padding:4px 8px;border-radius:2px;text-transform:uppercase;">Docker</span>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-sig">Built by <span>Ayanokouji</span> · Founder @ <span>Spectre Flow</span></div>
     <div class="footer-tag">StudyPlannerFX v2.0 · Java 21 · Spring Boot 3.2</div>
@@ -1103,7 +876,6 @@
 </div>
 
 <script>
-  // ── CLOCK ──
   function updateClock() {
     const now = new Date();
     const h = String(now.getHours()).padStart(2,'0');
@@ -1121,7 +893,6 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // ── UPTIME (since 9th Ramadan 2025 ≈ March 9, 2025) ──
   const REBOOT_DATE = new Date('2025-03-09T00:00:00');
   function updateUptime() {
     const now = new Date();
@@ -1137,7 +908,6 @@
   setInterval(updateUptime, 60000);
   updateUptime();
 
-  // ── PROGRESS BARS (animate in) ──
   const stats = [
     { id: 'momentum', val: 82 },
     { id: 'consistency', val: 68 },
@@ -1153,7 +923,6 @@
     });
   }, 400);
 
-  // ── FOCUS TIMER ──
   let timerRunning = false;
   let timerSeconds = 25 * 60;
   let timerInterval = null;
@@ -1189,11 +958,9 @@
             document.getElementById('sessionCount').textContent = sessions;
             isBreak = true;
             timerSeconds = BREAK_TIME;
-            addLog('ok', '› Focus session complete — break started');
           } else {
             isBreak = false;
             timerSeconds = FOCUS_TIME;
-            addLog('info', '› Break over — focus session started');
           }
         }
         updateTimerDisplay();
@@ -1219,38 +986,6 @@
     document.getElementById('timerStart').textContent = 'START';
     updateTimerDisplay();
   }
-
-  // ── LOG FEED ──
-  function addLog(type, msg) {
-    const feed = document.getElementById('logFeed');
-    const now = new Date();
-    const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-    const line = document.createElement('div');
-    line.className = `log-line ${type}`;
-    line.innerHTML = `<span class="ts">${ts}</span><span class="msg">${msg}</span>`;
-    feed.appendChild(line);
-    // keep max 8 lines
-    while (feed.children.length > 8) feed.removeChild(feed.firstChild);
-    feed.scrollTop = feed.scrollHeight;
-  }
-
-  // Occasional ambient log messages
-  const ambientLogs = [
-    ['info', '› Operator status: ACTIVE'],
-    ['ok', '› All systems nominal'],
-    ['', '› Spectre Flow engine running'],
-    ['info', '› GitHub sync complete'],
-    ['ok', '› No anomalies detected'],
-    ['', '› Infrastructure check passed'],
-  ];
-  let logIdx = 0;
-  setTimeout(() => {
-    setInterval(() => {
-      const [type, msg] = ambientLogs[logIdx % ambientLogs.length];
-      addLog(type, msg);
-      logIdx++;
-    }, 18000);
-  }, 5000);
 </script>
 </body>
 </html>
