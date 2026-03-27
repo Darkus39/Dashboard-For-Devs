@@ -86,7 +86,7 @@
     animation: pulse 2s ease-in-out infinite;
   }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-  .header-time { font-size: 13px; color: var(--text-dim); letter-spacing: 0.08em; }
+  .header-time { font-size: 13px; color: var(--text-dim); letter-spacing: 0.08em; flex-shrink: 0; padding-right: 4px; min-width: 80px; text-align: right; }
 
   /* MAIN GRID */
   .main-grid {
@@ -382,6 +382,7 @@
       <div class="status-dot"></div>
       SYSTEMS ONLINE
     </div>
+    <div class="header-time" id="headerTime">00:00:00</div>
   </header>
 
   <!-- MAIN GRID -->
@@ -489,7 +490,7 @@
           <div class="quick-grid">
             <a href="https://github.com/Darkus39" target="_blank" class="quick-btn"><span class="quick-icon">⚡</span><span class="quick-label">GitHub</span></a>
             <a href="https://spectre-flow-website.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">🌐</span><span class="quick-label">Spectre Flow</span></a>
-            <a href="https://www.linkedin.com/in/md-alif-hossain-nayem-0353a5358" target="_blank" class="quick-btn"><span class="quick-icon">🔗</span><span class="quick-label">LinkedIn</span></a>
+            <a href="https://www.linkedin.com/in/ayanokouji-spectreflow/" target="_blank" class="quick-btn"><span class="quick-icon">🔗</span><span class="quick-label">LinkedIn</span></a>
             <a href="https://instagram.com/spectreflow.ai" target="_blank" class="quick-btn"><span class="quick-icon">📡</span><span class="quick-label">Instagram</span></a>
             <a href="https://bracu-study-planner.vercel.app" target="_blank" class="quick-btn"><span class="quick-icon">📚</span><span class="quick-label">Study Planner</span></a>
             <a href="https://cal.com/ayanokouji-j98vjt" target="_blank" class="quick-btn"><span class="quick-icon">📅</span><span class="quick-label">Book a Call</span></a>
@@ -553,6 +554,7 @@
     const s = String(now.getSeconds()).padStart(2,'0');
     const t = `${h}:${m}:${s}`;
     document.getElementById('clockTime').textContent = t;
+    const htEl = document.getElementById('headerTime'); if(htEl) htEl.textContent = t;
     const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
     const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
     document.getElementById('clockDate').textContent =
